@@ -1,9 +1,14 @@
 package trabajopracticonº5;
 
-public class ControlDeStock extends javax.swing.JFrame {
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
+public class ControlDeStock extends javax.swing.JFrame {
+    private DefaultTableModel modelo;   //Creo un atributo modelo para trabajar mi tabla
+    
     public ControlDeStock() {
         initComponents();
+        this.modelo = (DefaultTableModel) jtTabla.getModel();   //Le asigno los datos de mi tabla al modelo
     }
 
     @SuppressWarnings("unchecked")
@@ -47,14 +52,7 @@ public class ControlDeStock extends javax.swing.JFrame {
 
         jtTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nombre", "Descripcion", "Categoria", "Precio"
@@ -103,11 +101,6 @@ public class ControlDeStock extends javax.swing.JFrame {
 
         jbLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jbLimpiar.setText("Limpiar");
-        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbLimpiarActionPerformed(evt);
-            }
-        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Precio");
@@ -244,26 +237,17 @@ public class ControlDeStock extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
-        // TODO add your handling code here:
-        jtCodigo.setText("");
-        jtNombre.setText("");
-        jtDescripcion.setText("");
-        jtPrecio.setText("");
-    }//GEN-LAST:event_jbLimpiarActionPerformed
-
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
-        // TODO add your handling code here:
+        String cat =(String) jcCategoria.getSelectedItem();
+        int cod = Integer.parseInt(jtCodigo.getText());
+        String nom = jtNombre.getText();
+        String desc = jtDescripcion.getText();
+        float pre =Float.parseFloat(jtPrecio.getText());
         
-            jtNombre.setText(jcCategoria.getSelectedItem().toString());
-        
-        
+        Producto p = new Producto(cat, cod, nom, desc, pre);
+        limpiarIngresos();
+        cargarDatos(p);
     }//GEN-LAST:event_jbAgregarActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -317,4 +301,16 @@ public class ControlDeStock extends javax.swing.JFrame {
     private javax.swing.JTextField jtPrecio;
     private javax.swing.JTable jtTabla;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarDatos(Producto p){
+        modelo.addRow(new Object[]{p.getCodigo(),p.getNombre(),p.getDescripcion(),p.getPrecio()});  //Instancio un producto
+    }
+
+    private void limpiarIngresos() {    //Limpio Pantalla
+        jtCodigo.setText("");
+        jtNombre.setText("");
+        jtDescripcion.setText("");
+        jtPrecio.setText("");
+        jcCategoria.setSelectedIndex(0);
+    }
 }
