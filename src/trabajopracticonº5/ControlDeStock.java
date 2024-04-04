@@ -103,6 +103,11 @@ public class ControlDeStock extends javax.swing.JFrame {
 
         jbLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jbLimpiar.setText("Limpiar");
+        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimpiarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Precio");
