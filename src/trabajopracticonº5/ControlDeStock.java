@@ -1,11 +1,7 @@
 package trabajopracticonº5;
 
 public class ControlDeStock extends javax.swing.JFrame {
-<<<<<<< Updated upstream
 
-=======
-  
->>>>>>> Stashed changes
     public ControlDeStock() {
         initComponents();
     }
@@ -243,8 +239,7 @@ public class ControlDeStock extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-<<<<<<< Updated upstream
-=======
+
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         // TODO add your handling code here:
         jtCodigo.setText("");
@@ -264,7 +259,7 @@ public class ControlDeStock extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
->>>>>>> Stashed changes
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
